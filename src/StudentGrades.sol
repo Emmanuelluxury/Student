@@ -9,8 +9,8 @@ contract StudentGrades {
 
     struct Student {
         bool exists;
-        uint256 score; 
-        string name; 
+        uint256 score;
+        string name;
         uint256 grade;
     }
 
@@ -31,8 +31,8 @@ contract StudentGrades {
     }
 
     function addStudent(address studentAddress, uint256 score, string memory name) external onlyAdmin {
-    require(!students[studentAddress].exists, "Student already added.");
-    students[studentAddress] = Student(true, score, name, 0);
+        require(!students[studentAddress].exists, "Student already added.");
+        students[studentAddress] = Student(true, score, name, 0);
     }
 
     function viewMyGrade() public view onlyStudent returns (uint256) {
@@ -42,7 +42,6 @@ contract StudentGrades {
     function isStudent(address student) public view returns (bool) {
         return students[student].exists; // Check if the address is a registered student
     }
-
 
     function getStudentScore(address studentAddress) public view returns (uint256) {
         require(students[studentAddress].exists, "Student does not exist.");
